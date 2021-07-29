@@ -1,0 +1,15 @@
+#breadcumb {
+    background-color: #131313;
+    height: 40px;
+    ol {
+        list-style: none;
+        li {
+            font-size: 12px;
+            a {
+                color: #999;
+                text-decoration: none;
+            }
+            color: white;
+        }
+    }
+}

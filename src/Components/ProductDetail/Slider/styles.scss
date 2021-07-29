@@ -1,0 +1,73 @@
+#detail-product {
+    .slides-detail {
+        .slick-slide {
+            border: none;
+        }
+        .slick-prev {
+            left: 3vw;
+            z-index: 3;
+        }
+        .slick-next {
+            right: 3vw;
+            z-index: 3;
+        }
+        .slide-item {
+            position: relative;
+            video {
+                width: 100%;
+                border: none;
+            }
+            img {
+                width: 100%;
+            }
+            .bgr-image {
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                height: 100%;
+                z-index: -1;
+                transform: translate(-50%, -50%);
+            }
+            .crs-list {
+                .item {
+                    min-height: calc(100vh - 92px);
+                    padding: 4vh 10vw;
+                    .item-row {
+                        min-height: calc(100vh - 92px);
+                        .item-img {
+                            height: 100%;
+                            position: relative;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            img {
+                                width: 100%;
+                                object-fit: cover;
+                            }
+                        }
+                        .col-text {
+                            align-items: flex-start;
+                            color: #dddd;
+                            img {
+                                width: 200px;
+                            }
+                            h3 {
+                                font-size: 30px;
+                            }
+                            p {
+                                font-family: var(--font-family-Ti);
+                                font-size: 18px;
+                            }
+                        }
+                        .icon-logo {
+                            img {
+                                padding: 0 1vw 0 0;
+                                width: 100px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

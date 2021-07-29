@@ -1,0 +1,23 @@
+.pagi-list {
+    li {
+        button {
+            border: 1px solid #666;
+            color: #666;
+            background: #202020;
+            cursor: pointer;
+            margin-left: 10px;
+            margin-bottom: 10px;
+            min-width: 32px;
+            padding: 2px 6px;
+            &:hover {
+                border-color: white;
+                color: white;
+            }
+        }
+        .btn-active {
+            background-color: #ff6400;
+            border-color: #ff6400;
+            color: white;
+        }
+    }
+}

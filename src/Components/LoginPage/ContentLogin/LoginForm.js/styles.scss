@@ -1,0 +1,30 @@
+@import url("https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,300;0,400;0,600;0,700;1,300;1,600;1,700&display=swap");
+#wapper-login {
+    background: url(https://member.aorus.com/images/bg2/AORUS-Gaming-Corner-01.jpg?fbclid=IwAR2KuJNkkuk1C7cfRl-gpmSueDlXwAM7HEAFVMDOJnT6vJMftAViluUHvh0);
+    min-height: 80vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    &::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+    .content-box {
+        position: relative;
+        z-index: 1;
+        margin: 0 auto;
+        max-width: 500px;
+        min-height: 500px;
+        background-color: rgba(0, 0, 0, 0.7);
+        padding: 30px;
+    }
+    input:focus {
+        color: white;
+        background-color: #000;
+    }
+}

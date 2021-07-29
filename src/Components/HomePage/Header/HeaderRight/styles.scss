@@ -1,0 +1,54 @@
+.header-right {
+    img {
+        height: 14px;
+    }
+    .login:hover {
+        i {
+            color: #ff6400;
+        }
+    }
+    i {
+        font-size: 20px;
+        color: white;
+    }
+    .user {
+        position: relative;
+        &:hover {
+            .sub {
+                display: flex;
+            }
+        }
+        .sub {
+            background-color: rgba(0, 0, 0, 0.85);
+            position: absolute;
+            width: auto;
+            right: -25px;
+            text-align: start;
+            display: none;
+            li {
+                &:hover {
+                    a,
+                    button {
+                        color: #ff6400;
+                    }
+                }
+                padding: 10px 10px 10px 10px;
+                a,
+                button {
+                    font-family: var(--font-family-Ti);
+                    color: white;
+                    text-decoration: none;
+                    padding-left: 5px;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 1399.98px) {
+    .header-right {
+        i {
+            font-size: 16px;
+        }
+    }
+}

@@ -1,0 +1,203 @@
+@import url("https://fonts.googleapis.com/css2?family=Aldrich&display=swap");
+* {
+    font-family: "Aldrich", sans-serif;
+}
+
+.header-left {
+    .menu-canvas {
+        width: 400px;
+        top: 0;
+        left: -400px;
+        z-index: 1001;
+        position: fixed;
+        background-color: rgba(0, 0, 0, 1);
+        height: 100vh;
+        transition: all 0.3s;
+        .canvas-header {
+            height: 50px;
+            .canvas-close {
+                transition: transform 0.5s;
+                &:hover {
+                    transform: rotate(180deg);
+                }
+            }
+        }
+        .canvas-content {
+            .list {
+                list-style: none;
+                .list-item {
+                    color: #fff;
+                    padding: 5px 0px;
+                    .item-title {
+                        margin-bottom: 10px;
+                        span {
+                            margin-right: 8px;
+                        }
+                        i {
+                            font-size: 13px;
+                        }
+                    }
+                    &:hover {
+                        color: #ff6400;
+                        .sub-menu {
+                            position: relative;
+                            top: 0;
+                            opacity: 1;
+                        }
+                    }
+                    .sub-menu {
+                        opacity: 0;
+                        top: -100%;
+                        transition: opacity 0.5s;
+                        position: fixed;
+                        padding: 10px 0px;
+                        line-height: 30px;
+                        a {
+                            text-decoration: none;
+                            color: #9d9d9d;
+                            &:hover {
+                                color: #ff6400;
+                            }
+                        }
+                        &::after,
+                        &::before {
+                            content: "";
+                            background-color: #9d9d9d;
+                            position: absolute;
+                            height: 1px;
+                            width: 109%;
+                            left: -32px;
+                        }
+                        &::after {
+                            top: 0;
+                        }
+                        &::before {
+                            bottom: 0;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .canvas-active {
+        left: 0;
+    }
+    .navbar {
+        .navbar-brand {
+            .logo {
+                height: 36px;
+            }
+        }
+    }
+    .nav {
+        .nav-item {
+            position: relative;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            font-size: 16px;
+            .nav-title {
+                font-weight: 400;
+                color: #fff;
+                span {
+                    margin-right: 15px;
+                }
+            }
+            .nav-title {
+                i {
+                    transition: transform 0.3s;
+                }
+            }
+            &:hover {
+                .nav-title {
+                    color: #ff6400;
+                    i {
+                        transform: rotate(180deg);
+                    }
+                }
+                .sub-menu,
+                .wrapper-drop {
+                    top: 0%;
+                }
+            }
+            a {
+                color: #fff;
+            }
+            .wrapper-drop {
+                background-color: rgba(0, 0, 0, 0.85);
+                position: fixed;
+                width: 100vw;
+                left: 0;
+                top: -300%;
+                z-index: -1;
+                padding-top: 97px;
+                transition: top 0.4s;
+                .nav-drop {
+                    .drop-item {
+                        text-align: center;
+                        margin-right: 36px;
+                        padding-bottom: 14px;
+                        img {
+                            width: 162px;
+                            height: 162px;
+                            margin-bottom: 10px;
+                        }
+                        div {
+                            font-size: 13px;
+                            color: #fff;
+                        }
+                        &:hover {
+                            .item-title {
+                                color: #ff6400;
+                            }
+                        }
+                    }
+                }
+            }
+            .sub-menu {
+                z-index: -1;
+                position: absolute;
+                width: 180%;
+                background-color: rgba(0, 0, 0, 0.85);
+                padding: 80px 5px 10px 5px;
+                top: -500%;
+                transition: top 0.5s;
+                .drop-item {
+                    font-size: 14px;
+                    &::after {
+                        content: "";
+                        width: 90%;
+                        left: 50%;
+                        transform: translateX(-50%);
+                        height: 1px;
+                        background-color: rgba(151, 151, 151, 0.867);
+                        position: absolute;
+                    }
+                    &:last-child::after {
+                        display: none;
+                    }
+                    &:hover {
+                        .nav-link {
+                            color: #ff6400;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 1399.98px) {
+    .header-left {
+        .navbar {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            .navbar-brand {
+                .logo {
+                    height: 25px;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,73 @@
+label {
+    color: #999;
+    font-size: 14px;
+}
+
+#email,
+#password,
+#username,
+#re-password {
+    background-color: #282828;
+    height: 50px;
+    color: #fff;
+    &:focus {
+        border: 1px solid #ff6400;
+    }
+}
+
+.forgot {
+    margin-top: 3px;
+    color: #ff6400;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.label-in-width {
+    font-family: "Titillium Web", sans-serif;
+    font-size: 18px;
+}
+
+.icon {
+    i {
+        position: relative;
+        margin-left: 5px;
+        width: 32px;
+        height: 32px;
+        line-height: 32px;
+        border-radius: 50%;
+        border: 1px solid #666;
+        transition: 0.3s all;
+        cursor: pointer;
+        color: white;
+    }
+    margin-left: 5px;
+    &:hover {
+        .fa-facebook-f {
+            background: #4267b2;
+            border: 1px solid #4267b2;
+        }
+        .fa-twitter {
+            background: #41abe1;
+            border: 1px solid #41abe1;
+        }
+        .fa-google-plus-g {
+            background: #dd4d42;
+            border: 1px solid #dd4d42;
+        }
+    }
+}
+
+.button-login {
+    background-color: #ff6400;
+    padding: 10px 12px;
+    &:hover {
+        color: #fff;
+        background-color: #ca5100;
+        border-color: #ca5100;
+    }
+}
+
+.button-create {
+    border: 2px solid #fff;
+    padding: 10px 12px;
+}

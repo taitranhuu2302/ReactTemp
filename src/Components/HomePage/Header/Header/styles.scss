@@ -1,0 +1,23 @@
+@import url("https://fonts.googleapis.com/css2?family=Aldrich&display=swap");
+* {
+    font-family: "Aldrich", sans-serif;
+}
+
+#header {
+    background: linear-gradient(180deg, #000, transparent);
+    height: 137px;
+    position: fixed;
+    z-index: 1000;
+    .header-content {
+        height: 96px;
+    }
+}
+
+@media (max-width: 1399.98px) {
+    #header {
+        height: 60px;
+        .header-content {
+            height: 100%;
+        }
+    }
+}

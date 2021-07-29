@@ -1,0 +1,49 @@
+#home {
+    .table-content {
+        min-height: 641px;
+        margin-bottom: 16px;
+        .search-bar {
+            position: relative;
+            .input-search {
+                padding-right: 40px;
+            }
+            .btn-search {
+                position: absolute;
+                right: 0;
+                top: 50%;
+                z-index: 5;
+                transform: translateY(-50%);
+            }
+        }
+        .list-products {
+            .filter-table {
+                input[name="filterName"] {
+                    background-color: #fff;
+                    height: 40px;
+                    color: #333;
+                }
+            }
+            img {
+                height: 103px;
+            }
+            .label-status {
+                font-size: 16px;
+                color: #333;
+                font-weight: bold;
+            }
+        }
+    }
+    .pagi-admin {
+        cursor: pointer;
+        margin-left: 10px;
+        margin-bottom: 10px;
+        min-width: 32px;
+        padding: 2px 6px;
+    }
+    .bottom {
+        .add-product {
+            padding: 10px 30px;
+            height: 47px;
+        }
+    }
+}

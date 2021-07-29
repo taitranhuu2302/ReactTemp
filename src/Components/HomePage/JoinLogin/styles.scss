@@ -1,0 +1,91 @@
+@import url("https://fonts.googleapis.com/css2?family=Aldrich&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,300;0,400;0,600;0,700;1,300;1,600;1,700&display=swap");
+#join-login {
+    width: 100%;
+    background-image: url(https://www.aorus.com/assets/img/bg.c6d522f6.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 600px;
+    position: relative;
+    &::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.5);
+    }
+    .join-content {
+        padding: 20px 0;
+        position: absolute;
+        color: #fff;
+        top: 50%;
+        text-align: center;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        h1 {
+            font-family: "Aldrich", sans-serif;
+            font-size: 45px;
+            margin-bottom: 30px;
+        }
+        p {
+            font-family: "Titillium Web", sans-serif;
+            font-size: 20px;
+        }
+        a.caption-btn {
+            clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px);
+            color: #fff;
+            font-size: 18px;
+            min-width: 161px;
+            padding: 9px 0;
+        }
+        a.signup {
+            background-color: #ff6400;
+            &:hover {
+                background-color: #73fbfd;
+                color: #000;
+            }
+        }
+        a.login {
+            border: 2px solid #fff;
+            position: relative;
+            &:hover {
+                background-color: #fff;
+                color: #000;
+            }
+            &::after,
+            &::before {
+                content: "";
+                position: absolute;
+                z-index: 10;
+                height: 2px;
+                background: #fff;
+                transform: rotate(-45deg);
+            }
+            &::before {
+                right: -3px;
+                bottom: 0px;
+                width: 13px;
+            }
+            &::after {
+                left: -5px;
+                top: 0;
+                width: 20px;
+            }
+        }
+    }
+}
+
+@media (max-width: 575.98px) {
+    #join-login {
+        .join-content {
+            h1 {
+                font-size: 30px;
+            }
+            p {
+                font-size: 16px;
+            }
+        }
+    }
+}

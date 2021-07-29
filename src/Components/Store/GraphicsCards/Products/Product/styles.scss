@@ -1,0 +1,40 @@
+.product-item {
+    padding: 0 10px;
+    margin-bottom: 20px;
+    .bgr {
+        background-color: #202020;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 30px 0;
+        img {
+            width: 90%;
+        }
+        .item-caption {
+            padding: 20px 10px 20px 15px;
+            color: white;
+            min-height: 88px;
+        }
+        .button-task {
+            button {
+                color: #666;
+                border: 1px solid #666;
+            }
+            .button-link {
+                color: #666;
+                border: 1px solid #666;
+                &:hover {
+                    border-color: white;
+                    color: white;
+                }
+            }
+            .button-add {
+                &:hover {
+                    border-color: #ff6400;
+                    background-color: #ff6400;
+                    color: white;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,45 @@
+.detail-nav {
+    background: #000;
+    min-height: 62px;
+    .name-product {
+        font-size: 25px;
+    }
+    .nav-list {
+        ul {
+            li {
+                position: relative;
+                &:hover {
+                    a {
+                        color: var(--color-orange);
+                    }
+                    &::after {
+                        width: 75%;
+                    }
+                }
+                a {
+                    color: #fff;
+                    font-size: 19px;
+                }
+                &::after {
+                    content: "";
+                    position: absolute;
+                    background-color: #ff6400;
+                    width: 0;
+                    left: 50%;
+                    bottom: 0;
+                    transform: translateX(-50%);
+                    height: 3px;
+                    transition: width 0.2s;
+                }
+            }
+        }
+        .activeNumber {
+            a {
+                color: var(--color-orange);
+            }
+            &::after {
+                width: 75%;
+            }
+        }
+    }
+}

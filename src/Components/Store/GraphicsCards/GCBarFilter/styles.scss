@@ -1,0 +1,84 @@
+#filter {
+    height: 60px;
+    background-color: #151515;
+    .btn-filter {
+        border: 1px solid #fff;
+        color: #fff;
+        &:hover {
+            background-color: #ff6400;
+            border-color: #ff6400;
+        }
+    }
+    .filter-canvas {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 3;
+        width: 90vw;
+        transform: translateX(-90vw);
+        transition: transform 0.5s;
+        background-color: #3e3e3e;
+        height: 100vh;
+        .canvas-close {
+            transition: transform 0.5s;
+            &:hover {
+                transform: rotate(180deg);
+            }
+        }
+    }
+    .canvas-active {
+        transform: translateX(0);
+    }
+    .filter-left {
+        .left-icon {
+            .name-tag {
+                position: relative;
+                margin-left: 25px;
+                .tag {
+                    position: absolute;
+                    width: 20px;
+                    height: 20px;
+                    font-size: 14px;
+                    color: white;
+                    border-radius: 50%;
+                    background-color: #ff6400;
+                    text-align: center;
+                    font-family: var(--font-family-Ti);
+                    right: -17px;
+                    top: -13px;
+                }
+            }
+            button {
+                background: #2c2c2c;
+                font-family: var(--font-family-Ti);
+                padding: 8px 35px;
+                &:hover {
+                    background: #ff6400;
+                }
+            }
+        }
+    }
+    .line {
+        width: 1px;
+        height: 40px;
+        margin: 10px 50px;
+        background: #616161;
+    }
+    .filter-right {
+        select {
+            background-color: transparent;
+            color: white;
+            border: 1px solid #616161;
+            height: 40px;
+            width: auto;
+            option {
+                border: 1px solid #616161;
+                background: #363636;
+                width: 100%;
+                height: 50px;
+                line-height: 50px;
+                font-size: 16px;
+            }
+        }
+    }
+}

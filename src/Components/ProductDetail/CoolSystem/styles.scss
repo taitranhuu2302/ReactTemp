@@ -1,0 +1,83 @@
+#cool {
+    height: calc(100vh - 92px);
+    background-color: #000;
+    .cool-text {
+        padding-left: 5vw;
+        color: #ddd;
+        .image-title {
+            height: 16px;
+            width: 200px !important;
+        }
+        ul {
+            li {
+                position: relative;
+                cursor: pointer;
+                h5 {
+                    transition: color 0.4s;
+                }
+                &::before {
+                    content: "";
+                    background-color: #ff6400;
+                    height: 0;
+                    width: 4px;
+                    position: absolute;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    left: -14px;
+                    transition: height 0.2s;
+                }
+                p {
+                    clip-path: polygon(0 0, 0 100%, 0 100%, 0 0);
+                    height: 0;
+                    font-size: 0.75rem;
+                    line-height: 1.5;
+                    letter-spacing: 1px;
+                    transition: clip-path 0.5s;
+                }
+                &:hover {
+                    h5 {
+                        color: #ff6400;
+                    }
+                    &::before {
+                        height: 100%;
+                    }
+                }
+            }
+        }
+    }
+    .cool-image {
+        height: 100%;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        img {
+            width: 100%;
+            position: absolute;
+            opacity: 0;
+            transition: all 0.5s;
+        }
+    }
+    .active-li {
+        &::before {
+            height: 100% !important;
+        }
+        h5 {
+            color: #ff6400;
+        }
+        p {
+            clip-path: polygon(0 0, 0 100%, 100% 100%, 100% 0) !important;
+            height: unset !important;
+        }
+    }
+    .bgr-img {
+        position: absolute;
+        height: 100%;
+        opacity: 1 !important;
+    }
+    .active-image {
+        opacity: 1 !important;
+    }
+}
+
+@media (max-width: 1199.98px) {}

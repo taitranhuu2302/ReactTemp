@@ -1,0 +1,42 @@
+#footer-home {
+    background-color: #1f1f1f;
+    min-height: 540px;
+    height: auto;
+    overflow-x: hidden;
+    .fab {
+        color: #dddd;
+        font-size: 18px;
+        margin: 0 10px;
+    }
+    .list-nav {
+        .col {
+            .h5 {
+                font-size: 18px;
+            }
+            .nav {
+                .nav-item {
+                    .nav-link {
+                        color: #ddd;
+                        font-size: 12px;
+                    }
+                }
+            }
+        }
+    }
+    .copy-right {
+        background-color: #000;
+        .nav {
+            .nav-item {
+                .nav-link {
+                    color: #ddd;
+                }
+            }
+        }
+    }
+    .color-bottom {
+        position: relative;
+        height: 5px;
+        width: 100%;
+        background: linear-gradient(90deg, #5ff9fc, #69a5dc 23.5%, #b460c6 69.44%, #f232b1);
+    }
+}

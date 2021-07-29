@@ -1,0 +1,9 @@
+.hight-charts {
+    margin-top: 5vh;
+    * {
+        font-family: var(--font-ubun);
+    }
+    .highcharts-legend-item {
+        display: none;
+    }
+}

@@ -1,0 +1,26 @@
+#wapper-login {
+    .content-box {
+        .input-regis {
+            .regis-title {
+                position: relative;
+                &::before {
+                    position: absolute;
+                    content: "!";
+                    color: #fff;
+                    z-index: 5;
+                    left: -6px;
+                    top: 18px;
+                    width: 16px;
+                    height: 16px;
+                    background: #ff6400;
+                    border-radius: 50%;
+                    text-align: center;
+                    line-height: 16px;
+                    opacity: 1;
+                    transition: 0.3s all;
+                    font-weight: 700;
+                }
+            }
+        }
+    }
+}

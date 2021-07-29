@@ -1,0 +1,128 @@
+.robot-bgr {
+    height: calc(100vh - 92px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row-reverse;
+    background-image: url(https://www.gigabyte.com/FileUpload/Global/KeyFeature/1682/innergigabyteimages/designConcept/bg.jpg);
+    animation: bgGlow 1s infinite linear alternate;
+    background-size: cover;
+    .col-text {
+        color: white;
+        padding: 4vh 3vw 2vh 5vw;
+        position: relative;
+        display: flex;
+        height: 100%;
+        justify-content: center;
+        align-items: flex-start;
+        flex-direction: column;
+        .line-image {
+            width: 200px !important;
+        }
+        p {
+            font-size: 18px;
+        }
+        .bgr-text-gradient {
+            position: absolute;
+            width: 115%;
+            height: 100%;
+            right: 0;
+            top: 0;
+            background-image: linear-gradient(90deg, transparent, black 35%);
+            z-index: -1;
+        }
+    }
+    .concept-robot {
+        position: relative;
+        height: 100%;
+        .image-robot {
+            object-fit: cover;
+            height: 100%;
+        }
+        .layer {
+            position: absolute;
+            top: 0;
+            object-fit: cover;
+            left: 50%;
+            height: 100%;
+            background-size: 100%;
+            background-position: center;
+            background-repeat: no-repeat;
+            transform: translateX(-50%);
+        }
+        .bgr-robot {
+            width: 2560px;
+            position: absolute;
+            top: 50%;
+            z-index: -1;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: bgGlow 1s infinite linear alternate;
+        }
+        .robot-frame1 {
+            animation: glitch-anim 4s infinite linear;
+        }
+        .robot-frame2 {
+            animation: glitch-anim-2 4s infinite linear;
+        }
+        .robot-frame3 {
+            animation: glitch-anim-3 4s infinite linear;
+        }
+        .robot-frame4 {
+            animation: glitch-anim-4 4s infinite linear;
+        }
+        .line-robot1 {
+            width: 100%;
+            background-image: url(https://www.gigabyte.com/FileUpload/Global/KeyFeature/1682/innergigabyteimages/designConcept/digitalLine1.png);
+            animation: line-move 2.5s infinite linear;
+        }
+        .line-robot2 {
+            width: 100%;
+            background-image: url(https://www.gigabyte.com/FileUpload/Global/KeyFeature/1682/innergigabyteimages/designConcept/digitalLine2.png);
+            animation: line-move 2s infinite linear;
+        }
+        .line-robot3 {
+            width: 100%;
+            background-image: url(https://www.gigabyte.com/FileUpload/Global/KeyFeature/1682/innergigabyteimages/designConcept/digitalLine3.png);
+            animation: line-move 5.5s infinite linear;
+        }
+        .line-robot4 {
+            width: 100%;
+            background-image: url(https://www.gigabyte.com/FileUpload/Global/KeyFeature/1682/innergigabyteimages/designConcept/digitalLine4.png);
+            animation: line-move 5s infinite linear;
+        }
+        .line-robot5 {
+            width: 100%;
+            background-image: url(https://www.gigabyte.com/FileUpload/Global/KeyFeature/1682/innergigabyteimages/designConcept/digitalLine5.png);
+            animation: line-move 4s infinite linear;
+        }
+        .line-robot6 {
+            width: 100%;
+            background-image: url(https://www.gigabyte.com/FileUpload/Global/KeyFeature/1682/innergigabyteimages/designConcept/digitalLine6.png);
+            animation: line-move 3s infinite linear;
+        }
+        .line-robot7 {
+            width: 100%;
+            background-image: url(https://www.gigabyte.com/FileUpload/Global/KeyFeature/1682/innergigabyteimages/designConcept/digitalLine7.png);
+            animation: line-move 4.55s infinite linear;
+        }
+    }
+}
+
+@keyframes bgGlow {
+    0% {
+        filter: brightness(1.1);
+    }
+    100% {
+        filter: brightness(0.9);
+    }
+}
+
+@media (max-width: 1199.98px) {
+    .robot-bgr {
+        height: auto;
+        .col-text {
+            height: auto;
+        }
+    }
+}
