@@ -11,13 +11,15 @@ import {
 import React, { useEffect, useState } from "react";
 import VisibilityIcon from "@material-ui/icons/Visibility";
 import VisibilityOffIcon from "@material-ui/icons/VisibilityOff";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { acGetUsersRequest, acUpdateUserRequest } from "./../../../Actions";
 
 export default function ChangePassword() {
   const users = useSelector((state) => state.users);
   const dispatch = useDispatch();
+  const history = useHistory();
+  const [notifi, setNotifi] = useState("");
   const [err, setErr] = useState({
     oldPassword: "",
     newPassword: "",
@@ -61,6 +63,7 @@ export default function ChangePassword() {
   const handleCheckErr = () => {
     const current = localStorage.getItem("username");
     const index = users.findIndex((user) => user.id === +current);
+    let check = true;
     const { oldPassword, newPassword, reNewPassword } = inputValue;
     var errFix = {
       oldPassword: "",
@@ -72,50 +75,65 @@ export default function ChangePassword() {
         ...errFix,
         oldPassword: "You have not entered your old password",
       };
+      check = false;
     } else if (oldPassword !== users[index].password) {
       errFix = {
         ...errFix,
         oldPassword: "The old password entered is incorrect",
       };
-    } else errFix = { ...errFix, oldPassword: "" };
+      check = false;
+    } else {
+      errFix = { ...errFix, oldPassword: "" };
+    }
     if (!newPassword) {
       errFix = {
         ...errFix,
         newPassword: "You have not entered a new password",
       };
+      check = false;
     } else if (newPassword.length < 8) {
       errFix = {
         ...errFix,
         newPassword: "Your password is less than 8 characters",
       };
-    } else errFix = { ...errFix, newPassword: "" };
+      check = false;
+    } else {
+      errFix = { ...errFix, newPassword: "" };
+    }
     if (!reNewPassword) {
       errFix = {
         ...errFix,
         reNewPassword: "You have not re-entered the new password",
       };
+      check = false;
     } else if (reNewPassword !== newPassword) {
       errFix = {
         ...errFix,
         reNewPassword: "Re-enter new incorrect password",
       };
-    } else errFix = { ...errFix, reNewPassword: "" };
+      check = false;
+    } else {
+      errFix = { ...errFix, reNewPassword: "" };
+    }
     setErr({ ...errFix });
+    return check;
   };
 
   const handleSave = () => {
-    handleCheckErr();
     const current = localStorage.getItem("username");
     const index = users.findIndex((user) => user.id === +current);
     var user = {
       ...users[index],
       password: inputValue.newPassword,
     };
-    if (err.oldPassword || err.newPassword || err.reNewPassword) {
-      return;
-    } else {
-      console.log(user);
-      // dispatch(acGetUsersRequest())
+    if (handleCheckErr()) {
+      dispatch(acUpdateUserRequest(user));
+      setNotifi("You have successfully updated your password!");
+      setInputValue({
+        oldPassword: "",
+        newPassword: "",
+        reNewPassword: "",
+      });
     }
   };
 
@@ -156,8 +174,13 @@ export default function ChangePassword() {
             )}
           </Grid>
         )}
+        {notifi && (
+          <Grid item xs={5} textAlign="center" className="mt-3">
+            <Typography className="color-orange">{notifi}</Typography>
+          </Grid>
+        )}
         <Grid item xs={8} textAlign="center">
-          <Link to="/membership" className="text-decoration-none">
+          <Link to="/membership/accountinfo" className="text-decoration-none">
             <Button className="background-orange my-4 px-5 mx-3 text-white">
               Go Back
             </Button>

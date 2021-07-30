@@ -22,7 +22,6 @@ export default function MemberShip() {
     country: "",
     date: "",
     image: "",
-    password: "",
   });
   const [save, setSave] = useState(false);
 
@@ -42,7 +41,6 @@ export default function MemberShip() {
         username: user.username ? user.username : "",
         email: user.email ? user.email : "",
         country: user.country ? user.country : "",
-        password: user.password,
         id: user.id,
         image: user.image ? user.image : "",
         date: user.date,
@@ -111,21 +109,12 @@ export default function MemberShip() {
       name: "email",
     },
     {
-      width: 6,
+      width: 12,
       label: "Country/Region",
       type: "text",
       value: inputValue.country,
       place: "",
       name: "country",
-      caption: "",
-    },
-    {
-      width: 6,
-      label: "Password",
-      type: "password",
-      value: inputValue.password,
-      place: "",
-      name: "password",
       caption: "",
     },
   ];
@@ -158,16 +147,16 @@ export default function MemberShip() {
           </Grid>
           <Grid item xs={12} md={8}>
             <Switch>
-              <Route path="/membership/changePassword">
-                <ChangePassword />
-              </Route>
-              <Route path="/membership" exact>
+              <Route path="/membership/accountinfo">
                 <AccoutDetail
                   handleChange={handleChange}
                   inputList={inputList}
                   save={save}
                   handleSave={handleSave}
                 />
+              </Route>
+              <Route path="/membership/changePassword">
+                <ChangePassword />
               </Route>
             </Switch>
           </Grid>
