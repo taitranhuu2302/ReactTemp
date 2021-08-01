@@ -72,6 +72,7 @@ class FilterTable extends Component {
             Add Product
           </Link>
         </td>
+        <td></td>
       </tr>
     );
   }

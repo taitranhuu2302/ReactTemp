@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import Typography from "@material-ui/core/Typography";
+import moment from "moment";
 
 class AdminProduct extends Component {
   constructor(props) {
@@ -79,6 +81,14 @@ class AdminProduct extends Component {
           >
             Delete
           </button>
+        </td>
+        <td>
+          <Typography variant="subtitle1" color="initial">
+            {product.updated_at}
+          </Typography>
+          <Typography variant="caption" className="fw-bold" color="initial">
+            {moment(product.updated_at).fromNow()}
+          </Typography>
         </td>
       </tr>
     );
