@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import SearchIcon from "@material-ui/icons/Search";
+import { Avatar } from "@material-ui/core";
 import ViewQuiltIcon from "@material-ui/icons/ViewQuilt";
 import NotificationsIcon from "@material-ui/icons/Notifications";
 import PersonIcon from "@material-ui/icons/Person";
@@ -18,9 +19,21 @@ import Button from "@material-ui/core/Button";
 
 export default function HeaderNav(props) {
   const [anchorEl, setAnchorEl] = useState(null);
+  const [avatar, setAvatar] = useState("");
+
   const handleClose = () => {
     setAnchorEl(null);
   };
+
+  useEffect(() => {
+    const { usersAdmin } = props;
+    const id = localStorage.getItem("uid");
+    const index = usersAdmin.findIndex((user) => +user.id === +id);
+    if (index !== -1) {
+      setAvatar(usersAdmin[index].avatar || "");
+    }
+  }, [props.usersAdmin]);
+
   let history = useHistory();
   const [title, setTitle] = useState("");
   const location = useLocation();
@@ -129,7 +142,8 @@ export default function HeaderNav(props) {
               onClick={(e) => setAnchorEl(e.currentTarget)}
               className="color-black"
             >
-              <PersonIcon />
+              <Avatar src={avatar} />
+              {/* <PersonIcon /> */}
             </Button>
             <Menu
               id="menu-user"

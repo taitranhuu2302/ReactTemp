@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./styles.scss";
 
 import {
@@ -13,6 +13,8 @@ import {
 import SettingsIcon from "@material-ui/icons/Settings";
 import HeaderNav from "./HeaderNav";
 import SideBar from "./SideBar";
+import { useDispatch, useSelector } from "react-redux";
+import { acGetUserAdminRequest } from "./../../../Actions";
 
 export default function Header() {
   const [toggleSide, setToggleSide] = useState(false);
@@ -21,6 +23,12 @@ export default function Header() {
   );
   const [bgrColor, setBgrColor] = useState("badge-purple");
   const [hidden, setHidden] = useState(true);
+  const dispatch = useDispatch();
+  const usersAdmin = useSelector((state) => state.usersAdmin);
+
+  useEffect(() => {
+    dispatch(acGetUserAdminRequest());
+  }, []);
 
   const onToggleSide = () => {
     setToggleSide(!toggleSide);
@@ -40,7 +48,11 @@ export default function Header() {
         <SideBar image={image} bgrColor={bgrColor} />
       </Box>
       <Box className="header-nav">
-        <HeaderNav toggleSide={toggleSide} onToggleSide={onToggleSide} />
+        <HeaderNav
+          toggleSide={toggleSide}
+          onToggleSide={onToggleSide}
+          usersAdmin={usersAdmin}
+        />
       </Box>
       <Box className="settings">
         <Button onClick={() => setHidden(!hidden)} className="button-settings">

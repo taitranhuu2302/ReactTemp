@@ -41,9 +41,9 @@
       "status": true,
       "aorus": true,
       "nvidia": false,
+      "amd": false,
       "created_at": "07/20/2021 8:14:12 PM",
-      "updated_at": "07/20/2021 8:20:13 PM",
-      "amd": false
+      "updated_at": "08/02/2021 9:00:10 PM"
     },
     {
       "id": 3,
@@ -713,21 +713,7 @@
       "id": 6
     }
   ],
-  "carts": [
-    {
-      "id": 7,
-      "created_at": "07/20/2021 8:14:12 PM",
-      "updated_at": "07/20/2021 8:20:13 PM",
-      "name": "AORUS GeForce RTX NVLINK™ BRIDGE FOR 30 SERIES",
-      "price": "",
-      "des": "",
-      "image": "https://static.gigabyte.com/StaticFile/Image/Global/e0ea0c1a48b315be53f2ea759ffbb909/Product/26172/web[/400",
-      "status": true,
-      "aorus": true,
-      "nvidia": false,
-      "amd": false
-    }
-  ],
+  "carts": [],
   "usersAdmin": [
     {
       "id": 1,
