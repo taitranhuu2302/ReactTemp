@@ -31,8 +31,12 @@ class GraphicsCard extends Component {
   };
 
   onAddToCart = (product) => {
-    const { users } = this.props;
+    const { users, history } = this.props;
     const id = JSON.parse(localStorage.getItem("username"));
+    if (!id) {
+      history.push("/global/login");
+      return;
+    }
     const index = users.findIndex((user) => user.id === id);
     var carts = users[index].carts || [];
     if (carts.length > 0) {
