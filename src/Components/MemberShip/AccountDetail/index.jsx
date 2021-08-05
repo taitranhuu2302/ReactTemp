@@ -1,5 +1,5 @@
 import { Box, Button, Typography } from "@material-ui/core";
-import React, { useState, useEffect } from "react";
+import React from "react";
 import MemberInput from "../MemberInput";
 
 const AccoutDetail = (props) => {

@@ -12,7 +12,7 @@ class GraphicsCards extends Component {
         <Header history={this.props.history} />
         <Breadcumb to="/" toBack="Home" current="Graphics Cards" />
         <Banner />
-        <GraphicsCard match={this.props.match} />
+        <GraphicsCard match={this.props.match} history={this.props.history} />
         <Footer />
       </>
     );

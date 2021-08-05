@@ -16,6 +16,7 @@ import RoomIcon from "@material-ui/icons/Room";
 import NotificationsIcon from "@material-ui/icons/Notifications";
 import PeopleAltIcon from "@material-ui/icons/PeopleAlt";
 import TocIcon from "@material-ui/icons/Toc";
+import LocalShippingIcon from "@material-ui/icons/LocalShipping";
 import React from "react";
 
 export default function SideBar(props) {
@@ -80,6 +81,11 @@ const listSideItem = [
     label: "Products",
     icon: <TocIcon />,
     to: "/admin/list-products",
+  },
+  {
+    label: "Order",
+    icon: <LocalShippingIcon />,
+    to: "/admin/order",
   },
   {
     label: "Typography",

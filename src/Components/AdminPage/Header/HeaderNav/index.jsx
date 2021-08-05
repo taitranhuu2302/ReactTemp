@@ -52,6 +52,9 @@ export default function HeaderNav(props) {
       case "/admin/list-products":
         setTitle("Products");
         break;
+      case "/admin/order":
+        setTitle("Order");
+        break;
       case "/admin/typography":
         setTitle("typography");
         break;

@@ -4,7 +4,11 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import CartItem from "./CartItem";
 import Slider from "react-slick";
-import { Link } from "react-router-dom";
+import { Button } from "@material-ui/core";
+import { toast } from "react-toastify";
+import moment from "moment";
+import { v4 as uuidv4 } from "uuid";
+import { SettingsOverscanTwoTone } from "@material-ui/icons";
 
 class Cart extends Component {
   listCart = (cart) => {
@@ -20,6 +24,47 @@ class Cart extends Component {
       );
     });
     return result;
+  };
+
+  compareProduct = () => {
+    const { users, history } = this.props;
+    const id = JSON.parse(localStorage.getItem("username"));
+    const index = users.findIndex((user) => user.id === id);
+    const now = moment().format("L LTS");
+    if (index !== -1) {
+      const user = {
+        ...users[index],
+      };
+      if (
+        !user.firstName ||
+        !user.lastName ||
+        !user.addressLine1 ||
+        !user.city ||
+        !user.provice ||
+        !user.postCode ||
+        !user.phoneNumber
+      ) {
+        history.push("/membership/shipping-address");
+        return;
+      }
+    }
+    var carts = users[index].carts || [];
+    var cartsTemp = [...carts];
+    var myOrder = {
+      userid: users[index].id,
+      email: users[index].email,
+      id: uuidv4(),
+      list: [...cartsTemp],
+      created_at: now,
+      status: 0,
+      // 0 => Đang chờ, 1 => Chấp nhận đơn hàng, -1 => Huỷ đơn hàng
+    };
+    this.props.onAddOrder(myOrder);
+    history.push("/membership/my-products");
+    toast.success("You have made a successful purchase!");
+    setTimeout(() => {
+      this.props.onDeleteAllCart();
+    }, 2000);
   };
 
   render() {
@@ -49,29 +94,29 @@ class Cart extends Component {
           </div>
           <div className="col-2 text-center">
             <div>
-              <Link
-                to="/GraphicsCard"
+              <Button
+                onClick={this.compareProduct}
                 className="btn caption-btn mb-4 signup rounded-0 shadow-none"
               >
                 COMPARE PRODUCTS
-              </Link>
+              </Button>
             </div>
             <div>
-              <button className="btn caption-btn login rounded-0 shadow-none">
+              <Button
+                onClick={() => this.props.onDeleteAllCart()}
+                className="btn caption-btn login rounded-0 shadow-none"
+              >
                 CLEAR ALL
-              </button>
+              </Button>
             </div>
           </div>
         </div>
         <div className="row d-flex d-xl-none cart-sm align-items-center">
-          <div className="col text-white">Compare 3 product(s)</div>
+          <div className="col text-white">{cart.length} product(s)</div>
           <div className="col text-end">
-            <Link
-              to="/GraphicsCard"
-              className="btn btn-compare rounded-0 shadow-none"
-            >
+            <Button className="btn btn-compare rounded-0 shadow-none">
               COMPARE PRODUCTS
-            </Link>
+            </Button>
           </div>
         </div>
       </>

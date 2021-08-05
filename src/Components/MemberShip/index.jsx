@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Box, Grid, Typography, Button } from "@material-ui/core";
+import { Box, Grid } from "@material-ui/core";
 import "./styles.scss";
-import MemberInput from "./MemberInput";
 import MemberAvatar from "./MemberAvatar";
 import { acGetUsersRequest, acUpdateUserRequest } from "./../../Actions";
 import { Switch, Route } from "react-router-dom";
 import AccoutDetail from "./AccountDetail";
 import ChangePassword from "./ChangePassword";
+import ShippingAddress from "./ShippingAddress";
+import Order from "./Order";
 
 export default function MemberShip() {
   const users = useSelector((state) => state.users);
@@ -136,6 +137,21 @@ export default function MemberShip() {
     }, 5000);
   };
 
+  const handleShipping = (data) => {
+    const id = inputValue.id;
+    const avatar = inputValue.image;
+    const shippingAddress = {
+      ...data,
+      id,
+      image: avatar,
+    };
+    setSave(true);
+    setTimeout(() => {
+      setSave(false);
+    }, 5000);
+    dispatch(acUpdateUserRequest(shippingAddress));
+  };
+
   return (
     <Box className="container-fluid body-account">
       <Box className="container h-100 body-account-content">
@@ -159,6 +175,16 @@ export default function MemberShip() {
               </Route>
               <Route path="/membership/changePassword">
                 <ChangePassword />
+              </Route>
+              <Route path="/membership/shipping-address">
+                <ShippingAddress
+                  handleShipping={handleShipping}
+                  save={save}
+                  users={users}
+                />
+              </Route>
+              <Route path="/membership/my-products">
+                <Order users={users} />
               </Route>
             </Switch>
           </Grid>

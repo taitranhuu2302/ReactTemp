@@ -150,10 +150,10 @@ export const acGetAllProductCart = (products) => {
   };
 };
 
-export const acAddToCartRequest = (product) => {
+export const acAddToCartRequest = (user) => {
   return (dispatch) => {
-    return callApi("carts", "POST", product).then((res) => {
-      return dispatch(acAddToCart(res.data));
+    return callApi(`users/${user.id}`, "PATCH", user).then((res) => {
+      return dispatch(acUpdateUser(user));
     });
   };
 };
@@ -228,11 +228,12 @@ export const acUpdateUserAdmin = (user) => {
 
 export const acUpdateUserRequest = (user) => {
   return (dispatch) => {
-    return callApi(`users/${user.id}`, "PUT", user).then((res) => {
+    return callApi(`users/${user.id}`, "PATCH", user).then((res) => {
       return dispatch(acUpdateUser(res.data));
     });
   };
 };
+
 export const acUpdateUser = (user) => {
   return {
     type: types.UPDATE_USER,
@@ -327,5 +328,67 @@ export const updateWork = (work) => {
   return {
     type: types.UPDATE_WORK,
     work,
+  };
+};
+
+// Order
+
+export const getOrderRequest = () => {
+  return (dispatch) => {
+    return callApi(`order`, "GET", null).then((res) => {
+      dispatch(getOrder(res.data));
+    });
+  };
+};
+
+export const getOrder = (orders) => {
+  return {
+    type: types.GET_ORDER,
+    orders,
+  };
+};
+
+export const deleteOrderRequest = (id) => {
+  return (dispatch) => {
+    return callApi(`order/${id}`, "DELETE", null).then((res) => {
+      dispatch(deleteOrder(id));
+    });
+  };
+};
+
+export const deleteOrder = (id) => {
+  return {
+    type: types.DELETE_ORDER,
+    id,
+  };
+};
+
+export const addOrderRequest = (order) => {
+  return (dispatch) => {
+    return callApi(`order`, "POST", order).then((res) => {
+      dispatch(addOrder(res.data));
+    });
+  };
+};
+
+export const addOrder = (order) => {
+  return {
+    type: types.ADD_ORDER,
+    order,
+  };
+};
+
+export const updateOrderRequest = (order) => {
+  return (dispatch) => {
+    return callApi(`order/${order.id}`, "PATCH", order).then((res) => {
+      dispatch(updateOrder(order));
+    });
+  };
+};
+
+export const updateOrder = (order) => {
+  return {
+    type: types.UPDATE_ORDER,
+    order,
   };
 };

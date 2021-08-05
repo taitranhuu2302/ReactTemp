@@ -47,7 +47,7 @@
             min-width: 161px;
             height: 57px;
         }
-        a.signup {
+        .signup {
             background-color: #ff6400;
             padding: 15px 22px;
             &:hover {
@@ -55,7 +55,7 @@
                 color: #000;
             }
         }
-        button.login {
+        .login {
             border: 2px solid #fff;
             position: relative;
             color: white;

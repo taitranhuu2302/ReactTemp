@@ -23,6 +23,7 @@ class GraphicsCard extends Component {
   componentDidMount() {
     this.props.acProductsRequest();
     this.props.getProductCart();
+    this.props.onGetUsers();
   }
 
   paginate = (number) => {
@@ -30,19 +31,58 @@ class GraphicsCard extends Component {
   };
 
   onAddToCart = (product) => {
-    const { carts } = this.props;
-    if (carts.some((item) => item.id === product.id)) {
-      return;
+    const { users } = this.props;
+    const id = JSON.parse(localStorage.getItem("username"));
+    const index = users.findIndex((user) => user.id === id);
+    var carts = users[index].carts || [];
+    if (carts.length > 0) {
+      if (users[index].carts.some((item) => item.id === product.id)) {
+        return;
+      }
     }
-    this.props.onAddToCart(product);
+    carts.push(product);
+    var user = {
+      id,
+      carts,
+    };
+    this.props.onUpdateUser(user);
   };
 
   onDeleteCart = (id) => {
-    this.props.onDeleteCart(id);
+    const { users } = this.props;
+    const idCurrent = JSON.parse(localStorage.getItem("username"));
+    const index = users.findIndex((user) => user.id === idCurrent);
+    var carts = users[index].carts || [];
+    const indexCart = carts.findIndex((cart) => cart.id === id);
+    carts.splice(indexCart, 1);
+    var user = {
+      id: idCurrent,
+      carts,
+    };
+    this.props.onUpdateUser(user);
+  };
+
+  onDeleteAllCart = () => {
+    const { users } = this.props;
+    const idCurrent = JSON.parse(localStorage.getItem("username"));
+    const index = users.findIndex((user) => user.id === idCurrent);
+    var carts = users[index].carts || [];
+    carts.splice(0);
+    var user = {
+      id: idCurrent,
+      carts,
+    };
+    this.props.onUpdateUser(user);
   };
 
   render() {
-    var { products, match, carts } = this.props;
+    var { products, match, users } = this.props;
+    const id = JSON.parse(localStorage.getItem("username"));
+    const index = users.findIndex((user) => user.id === id);
+    var carts = [];
+    if (index !== -1) {
+      carts = users[index].carts || [];
+    }
     const { currentPage, postsPerPage } = this.state;
     products = products.filter((product) => {
       return product.status === true;
@@ -88,9 +128,17 @@ class GraphicsCard extends Component {
         <div className="container-fluid" id="support">
           <Support />
         </div>
-        {carts.length > 0 ? (
+        {carts && carts.length > 0 ? (
           <div className="container-fluid" id="cart">
-            <Cart cart={carts} onDeleteCart={this.onDeleteCart} />
+            <Cart
+              cart={carts}
+              onDeleteCart={this.onDeleteCart}
+              users={this.props.users}
+              history={this.props.history}
+              onDeleteAllCart={this.onDeleteAllCart}
+              onAddToCart={this.props.onAddToCart}
+              onAddOrder={this.props.onAddOrder}
+            />
           </div>
         ) : (
           ""
@@ -214,6 +262,7 @@ const mapStateToProps = (state) => {
   return {
     products: state.products,
     carts: state.cart,
+    users: state.users,
   };
 };
 
@@ -222,14 +271,23 @@ const mapDispatchToProps = (dispatch, props) => {
     acProductsRequest: () => {
       dispatch(actions.acFetchProductsRequest());
     },
-    onAddToCart: (product) => {
-      dispatch(actions.acAddToCartRequest(product));
+    onAddToCart: (user) => {
+      dispatch(actions.acAddToCartRequest(user));
+    },
+    onUpdateUser: (user) => {
+      dispatch(actions.acUpdateUserRequest(user));
     },
     getProductCart: () => {
       dispatch(actions.acGetAllProductCartRequest());
     },
     onDeleteCart: (id) => {
       dispatch(actions.acDeleteProductCartRequest(id));
+    },
+    onGetUsers: () => {
+      dispatch(actions.acGetUsersRequest());
+    },
+    onAddOrder: (order) => {
+      dispatch(actions.addOrderRequest(order));
     },
   };
 };

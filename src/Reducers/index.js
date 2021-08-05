@@ -10,6 +10,7 @@ import users from "./users";
 import cart from "./cart";
 import usersAdmin from "./usersAdmin";
 import works from "./works";
+import order from "./order";
 
 const myReducers = combineReducers({
   slider,
@@ -23,6 +24,7 @@ const myReducers = combineReducers({
   cart,
   usersAdmin,
   works,
+  order,
 });
 
 export default myReducers;

@@ -7,6 +7,7 @@ import Footer from "./../../Components/AdminPage/Footer";
 import HomeTable from "./../../Components/AdminPage/Admin/Products/Home/Home";
 import Functions from "./../../Components/AdminPage/Admin/Products/AddProducts/Functions";
 import Users from "./../../Components/AdminPage/Admin/Users";
+import Order from "../../Components/AdminPage/Admin/Order";
 
 class AdminPage extends Component {
   render() {
@@ -52,6 +53,11 @@ const routes = [
     path: "/admin/users",
     exact: false,
     main: () => <Users />,
+  },
+  {
+    path: "/admin/order",
+    exact: false,
+    main: () => <Order />,
   },
   {
     path: "/admin/list-products",

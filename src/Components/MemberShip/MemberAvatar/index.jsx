@@ -67,6 +67,41 @@ export default function MemberAvatar(props) {
               Change Password
             </Button>
           </Link>
+          <Link
+            to="/membership/shipping-address"
+            className="text-decoration-none"
+          >
+            <Button
+              variant="outlined"
+              sx={{
+                color: "#fff",
+                background: "#000",
+                marginTop: "15px",
+                border: "1px solid #fff",
+                width: "100%",
+              }}
+              className="font-family-Ad"
+              component="span"
+            >
+              Shipping Address
+            </Button>
+          </Link>
+          <Link to="/membership/my-products" className="text-decoration-none">
+            <Button
+              variant="outlined"
+              sx={{
+                color: "#fff",
+                background: "#000",
+                marginTop: "15px",
+                border: "1px solid #fff",
+                width: "100%",
+              }}
+              className="font-family-Ad"
+              component="span"
+            >
+              My Products
+            </Button>
+          </Link>
         </Box>
       </Box>
     </>
